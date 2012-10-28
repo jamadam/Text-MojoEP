@@ -2,6 +2,7 @@ package Text::MojoEP;
 use strict;
 use warnings;
 use Mojo::Base -base;
+use Mojo::Template;
 
 our $VERSION = '0.01';
 
