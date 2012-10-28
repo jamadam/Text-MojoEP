@@ -1,0 +1,58 @@
+=head1 NAME
+
+Text::MojoEP - Mojo::Template wrapper
+
+=head1 SYNOPSIS
+
+    use Text::MojoEP;
+    
+    my $template = q{<%= my_func(shift) %>};
+    my $mt = Text::EmbeddedPerl->new;
+    
+    $mt->add_function('my_func',  sub { $_[0] ** 2 });
+    
+    print $mt->render($template, 1); # 1
+    print $mt->render($template, 2); # 4
+    print $mt->render($template, 3); # 9
+
+=head1 DESCRIPTION
+
+Mojo::Template wrapper for encapsulating low level APIs.
+
+=head1 ATTRIBUTES
+
+L<Text::MojoEP> implements the following attributes.
+
+=head2 C<mt>
+
+L<Mojo::Template> instance.
+
+    my $mt = $mojoep->mt;
+
+=head2 C<funcs>
+
+An array ref to contain template functions.
+
+    $self->funcs->{'some name'} = sub {...};
+
+=head1 METHODS
+
+L<Text::MojoEP> implements the following methods.
+
+=head2 C<add_function>
+
+Addes a function.
+
+    $mojoep->add_function('foo', sub {...});
+
+=head2 C<render>
+
+Renders a template with given arguments.
+
+    print $mt->render($template, @args);
+
+=head1 SEE ALSO
+
+L<Mojo::Template>, L<Mojolicious::Plugin::EP>, L<Mojolicious>
+
+=cut
