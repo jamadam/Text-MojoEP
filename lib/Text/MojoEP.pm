@@ -27,6 +27,7 @@ sub render {
         for my $name (keys %{$self->funcs}) {
             $prepend .= "sub $name; *$name = sub {\$_F->{$name}->(\@_)};";
         }
+        $prepend .= 'use strict;';
         
         $mt->prepend($prepend);
         
